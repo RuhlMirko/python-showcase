@@ -1,6 +1,6 @@
 def digital_root(n):
     while n >= 10:
-        print(int(digit) for digit in str(n))
+        print(digit for digit in str(n))
         n = sum(int(digit) for digit in str(n))
     return n
 
