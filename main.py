@@ -1,6 +1,3 @@
-import os.path
-import tkinter.filedialog
-
 import ttkbootstrap as tb
 import lorem
 
