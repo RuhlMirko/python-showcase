@@ -3,6 +3,7 @@ import lorem
 from showcase import *
 
 OUTPUTS_IMG = 'D:/Descargas/Horarios'
+current_proj = 0
 
 # root
 root = tb.Window(themename='darkly')
@@ -12,11 +13,10 @@ app_width = 500
 app_height = 450
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
-x = int((screen_width/2) -(app_width/2))
-y = int((screen_height/2) -(app_height/2))
+x = int((screen_width / 2) - (app_width / 2))
+y = int((screen_height / 2) - (app_height / 2))
 
 root.geometry(f'{app_width}x{app_height}+{x}+{y}')
-
 
 # styles
 Style = tb.Style()
@@ -40,8 +40,17 @@ proj_lbl.pack(padx=20, pady=10)
 # Project cursor
 nav_proj_frame = tb.Frame(root)
 nav_proj_frame.pack(pady=10)
-prevProj = tb.Button(nav_proj_frame, text='Prev', width=10, bootstyle='outline-info')
-nextProj = tb.Button(nav_proj_frame, text='Next', width=10, bootstyle='outline-info')
+
+
+def moveProj(steps):
+    global current_proj
+    if current_proj > 0 or steps != -1:
+        current_proj += steps
+    print(current_proj)
+
+
+prevProj = tb.Button(nav_proj_frame, text='Prev', width=10, bootstyle='outline-info', command=lambda: moveProj(-1))
+nextProj = tb.Button(nav_proj_frame, text='Next', width=10, bootstyle='outline-info', command=lambda: moveProj(1))
 prevProj.pack(side='left', padx=10)
 nextProj.pack(side='right', padx=10)
 
